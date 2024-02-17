@@ -798,37 +798,40 @@
 
         </div>
 
-        <form action="" class="contact-form" onsubmit="sendWhatsAppMessage()">
-          <div class="form-wrapper">
-              <label for="name" class="form-label">Name</label>
-              <div class="input-wrapper">
-                  <input type="text" name="name" id="name" required placeholder="e.g John Doe" class="input-field">
-                  <ion-icon name="person-circle"></ion-icon>
-              </div>
-          </div>
-          <div class="form-wrapper">
-              <label for="email" class="form-label">Email</label>
-              <div class="input-wrapper">
-                  <input type="email" name="email" id="email" required placeholder="e.g johndoe@mail.com" class="input-field">
-                  <ion-icon name="mail"></ion-icon>
-              </div>
-          </div>
-          <div class="form-wrapper">
-              <label for="phone" class="form-label">Phone</label>
-              <div class="input-wrapper">
-                  <input type="tel" name="phone" id="phone" required placeholder="Phone Number" class="input-field">
-                  <ion-icon name="call"></ion-icon>
-              </div>
-          </div>
-          <div class="form-wrapper">
-              <label for="message" class="form-label">Message</label>
-              <div class="input-wrapper">
-                  <textarea name="message" id="message" required placeholder="Write message..." class="input-field"></textarea>
-                  <ion-icon name="chatbubbles"></ion-icon>
-              </div>
-          </div>
-          <button type="submit" class="btn btn-primary">Send</button>
-      </form>
+      <form action="" class="contact-form" onsubmit="sendWhatsAppMessage()">
+    <div class="form-wrapper">
+        <label for="name" class="form-label">Name</label>
+        <div class="input-wrapper">
+            <input type="text" name="name" id="name" required placeholder="e.g John Doe" class="input-field">
+            <ion-icon name="person-circle"></ion-icon>
+        </div>
+    </div>
+    <div class="form-wrapper">
+        <label for="email" class="form-label">Email</label>
+        <div class="input-wrapper">
+            <input type="email" name="email" id="email" required placeholder="e.g johndoe@mail.com" class="input-field">
+            <ion-icon name="mail"></ion-icon>
+        </div>
+    </div>
+    <div class="form-wrapper">
+        <label for="phone" class="form-label">Phone</label>
+        <div class="input-wrapper">
+            <input type="tel" name="phone" id="phone" required placeholder="Phone Number" class="input-field">
+            <ion-icon name="call"></ion-icon>
+        </div>
+    </div>
+    <div class="form-wrapper">
+        <label for="message" class="form-label">Message</label>
+        <div class="input-wrapper">
+            <textarea name="message" id="message" required placeholder="Write message..." class="input-field"></textarea>
+            <ion-icon name="chatbubbles"></ion-icon>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>
+
+
+
 
         
       </section>
@@ -888,12 +891,13 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 
-  <script>
+ <script>
     function sendWhatsAppMessage() {
         const phoneNumber = document.getElementById('phone').value;
         const message = encodeURIComponent(document.getElementById('message').value);
-        const whatsappLink = "https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}";
+        const whatsappLink = `https://api.whatsapp.com/send?phone=${encodeURIComponent(phoneNumber)}&text=${message}`;
         window.location.href = whatsappLink;
+        return false; // Prevent form submission
     }
 </script>
 </body>
